@@ -33,6 +33,7 @@ const Settings = () => {
     CVOR_reminder_email: "",
     maintenance_duration: "",
     safety_duration: "",
+    safety_expiry_type: "",
   });
 
   const [file, setFile] = useState({
@@ -69,6 +70,7 @@ const Settings = () => {
   formData.append("CVOR_reminder_email", data.CVOR_reminder_email);
   formData.append("maintenance_duration", data.maintenance_duration);
   formData.append("safety_duration", data.safety_duration);
+  formData.append("safety_expiry_type", data.safety_expiry_type);
 
   const config = {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -240,6 +242,19 @@ const Settings = () => {
                 name="safety_duration"
                 value={data.safety_duration}
               />
+            </div>
+            <div className={styles.content_container}>
+              <label htmlFor="">Safety expiry type:</label>
+              <select
+                name="safety_expiry_type"
+                id=""
+                onChange={inputChange}
+                value={data.safety_expiry_type}
+                required
+              >
+                <option value="Semi-Annual">Semi-Annual</option>
+                <option value="Annual">Annual</option>
+              </select>
             </div>
             <div className={styles.content_container}>
               <label htmlFor="">Email active:</label>
