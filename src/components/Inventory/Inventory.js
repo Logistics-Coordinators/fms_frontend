@@ -368,7 +368,7 @@ const Inventory = () => {
               <Link to="/registerInventory">
                 <button className="button_add">
                   <img src={plus} alt="" />
-                  Add new equipement
+                  Add new equipment
                 </button>
               </Link>
             </div>
