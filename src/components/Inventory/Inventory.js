@@ -24,8 +24,7 @@ const Inventory = () => {
 
   const [equipmentName, setEquipmentName] = useState("Equipment");
 
-  const [selectEquipmentValue, setSelectEquipmentValue] =
-    useState("getAllTractors");
+  const [selectEquipmentValue, setSelectEquipmentValue] = useState("All");
 
   const {
     isLoggedIn,
@@ -153,6 +152,7 @@ const Inventory = () => {
         .then((response) => {
           setAlldrivers(response.data.tractors);
           setModal(false);
+          console.log(response);
         })
         .catch((err) => {
           console.log(err);
@@ -191,6 +191,45 @@ const Inventory = () => {
         }
       )
         .then((response) => {
+          setAlldrivers(response.data.tractors);
+          setModal(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status === 404) {
+            setModal(true);
+            setMsg("No data found");
+            setModalColor("red");
+          } else {
+            setModal(true);
+            setMsg("Please try again...");
+            setModalColor("red");
+          }
+        });
+    } catch (exc) {
+      console.log(exc);
+    } finally {
+      setAlldrivers("");
+    }
+  };
+
+  const getAllEquipments = () => {
+    setModal(true);
+    setMsg("Fetching data...");
+    setModalColor("green");
+    setEquipmentName("Equipment");
+    try {
+      Axios.get(
+        `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/${url}?status=${equipStatus}`,
+        // `http://localhost:8000/api/v1/LC/tractors/${url}?type=Straight Truck&status=${equipStatus}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+        .then((response) => {
+          console.log(response);
           setAlldrivers(response.data.tractors);
           setModal(false);
         })
@@ -257,17 +296,29 @@ const Inventory = () => {
     setSelectEquipmentValue(e.target.value);
   };
 
-  const handleOnClickEquipment = (e) => {
-    e.preventDefault();
-    console.log(selectEquipmentValue);
-    if (selectEquipmentValue === "getAllTractors") {
+  useEffect(() => {
+    if (selectEquipmentValue === "All") {
+      getAllEquipments();
+    } else if (selectEquipmentValue === "getAllTractors") {
       getAllTractors();
     } else if (selectEquipmentValue === "getAllTrailers") {
       getAllTrailers();
     } else if (selectEquipmentValue === "getAllStraightTrucks") {
       getAllStraightTrucks();
     }
-  };
+  }, [selectEquipmentValue, equipStatus]);
+
+  // const handleOnClickEquipment = (e) => {
+  //   e.preventDefault();
+  //   console.log(selectEquipmentValue);
+  //   if (selectEquipmentValue === "getAllTractors") {
+  //     getAllTractors();
+  //   } else if (selectEquipmentValue === "getAllTrailers") {
+  //     getAllTrailers();
+  //   } else if (selectEquipmentValue === "getAllStraightTrucks") {
+  //     getAllStraightTrucks();
+  //   }
+  // };
 
   return (
     <>
@@ -296,14 +347,15 @@ const Inventory = () => {
                 onChange={handleSelectEquipment}
                 className="button_all"
               >
+                <option value="All">All</option>
                 <option value="getAllTractors">Tractors</option>
                 <option value="getAllTrailers">Trailers</option>
                 <option value="getAllStraightTrucks">Straight trucks</option>
               </select>
 
-              <button onClick={handleOnClickEquipment} className="button_all">
+              {/* <button onClick={handleOnClickEquipment} className="button_all">
                 Get
-              </button>
+              </button> */}
               {/* <button onClick={getAllTractors} className="button_all">
                 Get all tractors
               </button>
@@ -357,6 +409,11 @@ const Inventory = () => {
                           />{" "}
                           <input type="text" value={item.VIN} />
                           <input type="text" value={item.licence_plate} />
+                          <input
+                            type="text"
+                            className={styles.status}
+                            value={item.status}
+                          />
                         </div>
                         <hr />
                       </div>
