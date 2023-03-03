@@ -71,7 +71,7 @@ const Settings = () => {
   //   setModalColor("green");
 
   //   Axios.patch(
-  //     `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/updateCompany`,
+  //     `https://lc-backend-v2.herokuapp.com/api/v1/LC/updateCompany`,
   //     formData,
   //     {
   //       headers: {
