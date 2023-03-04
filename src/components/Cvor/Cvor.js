@@ -43,7 +43,7 @@ const Inventory = () => {
 
   //For Getting all tractors
 
-  const getAlldrivers = () => {
+  useEffect(() => {
     setModal(true);
     setMsg("Fetching data...");
     setModalColor("green");
@@ -58,13 +58,13 @@ const Inventory = () => {
           setAllCvir(response.data.entry[0].CVIR);
           setAllCvor(response.data.entry[0].CVOR);
           setAllCitations(response.data.entry[0].citations);
-          setModal(true);
+          setModal(false);
           setMsg("Files fetched...");
           setModalColor("green");
         })
         .catch((err) => {
           console.log(err);
-          setModal(true);
+          setModal(false);
           setMsg("No files");
           setModalColor("green");
         });
@@ -73,7 +73,7 @@ const Inventory = () => {
     } finally {
       // setAlldrivers("");
     }
-  };
+  }, []);
 
   return (
     <>
@@ -83,9 +83,9 @@ const Inventory = () => {
         <div className={styles.main_container}>
           <div className={styles.button_heading}>
             <div className={styles.button_alignment_container}>
-              <button onClick={getAlldrivers} className="button_all">
+              {/* <button onClick={getAlldrivers} className="button_all">
                 Get all files
-              </button>
+              </button> */}
               <Link to="/registerCvor">
                 <button className="button_add">
                   <img src={plus} alt="" />
