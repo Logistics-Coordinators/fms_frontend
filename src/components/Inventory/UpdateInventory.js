@@ -272,7 +272,7 @@ const Inventory = () => {
                             name="year"
                             onChange={inputChange}
                             value={data.year}
-                            disabled
+
                           />
                         </div>
                         <div className={styles.table_content}>
@@ -342,7 +342,7 @@ const Inventory = () => {
                             maxlength="17"
                             onChange={inputChange}
                             value={data.VIN}
-                            disabled
+                            // disabled
                           />
                         </div>
                         <div className={styles.table_content}>
