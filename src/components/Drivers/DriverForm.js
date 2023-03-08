@@ -189,7 +189,7 @@ const Inventory = () => {
     setModalColor("green");
 
     Axios.post(
-      `https://lc-backend-v2.herokuapp.com/api/v1/LC/drivers/createDriver`,
+      `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/drivers/createDriver`,
       formData,
       {
         headers: {
@@ -267,25 +267,25 @@ const Inventory = () => {
                   </div>
 
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Gender:</label>
-                    <input
-                      type="text"
-                      placeholder="E.g. Male"
-                      name="gender"
-                      onChange={inputChange}
-                      value={data.gender}
-                      required
-                    />
-                  </div>
-
-                  <div className={styles.table_content}>
-                    <label htmlFor="">Email:</label>
+                    <label htmlFor="">*Email:</label>
                     <input
                       type="email"
                       placeholder="E.g. abcd@email.com"
                       name="email"
                       onChange={inputChange}
                       value={data.email}
+                      required
+                    />
+                  </div>
+
+                  <div className={styles.table_content}>
+                    <label htmlFor="">Gender:</label>
+                    <input
+                      type="text"
+                      placeholder="E.g. Male"
+                      name="gender"
+                      onChange={inputChange}
+                      value={data.gender}
                     />
                   </div>
 
@@ -302,7 +302,7 @@ const Inventory = () => {
                     />
                   </div>
                   <div className={styles.table_content}>
-                    <label htmlFor="">*DOB:</label>
+                    <label htmlFor="">DOB:</label>
                     <input
                       type="date"
                       data-date-format="YYYY MM DD"
@@ -310,11 +310,10 @@ const Inventory = () => {
                       name="DOB"
                       onChange={inputChange}
                       value={data.DOB}
-                      required
                     />
                   </div>
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Start date:</label>
+                    <label htmlFor="">Start date:</label>
                     <input
                       type="date"
                       data-date-format="YYYY MM DD"
@@ -322,43 +321,39 @@ const Inventory = () => {
                       name="start_date"
                       onChange={inputChange}
                       value={data.start_date}
-                      required
                     />
                   </div>
 
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Expiry</label>
+                    <label htmlFor="">Expiry</label>
                     <input
                       type="date"
                       placeholder="YYYY-MM-DD"
                       name="expiry"
                       onChange={inputChange}
                       value={data.expiry}
-                      required
                     />
                   </div>
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Medical expiry:</label>
+                    <label htmlFor="">Medical expiry:</label>
 
                     <input
                       type="date"
                       placeholder="YYYY-MM-DD"
-                      placeholder="Enter Medical expiry"
+                      // placeholder="Enter Medical expiry"
                       name="medical_expiry_date"
                       onChange={inputChange}
                       value={data.medical_expiry_date}
-                      required
                     />
                   </div>
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Shift:</label>
+                    <label htmlFor="">Shift:</label>
                     <select
                       name="shift"
                       id=""
                       onChange={inputChange}
                       value={data.shift}
                       // default={}
-                      required
                     >
                       <option selected="selected" value="AM">
                         AM
@@ -367,13 +362,12 @@ const Inventory = () => {
                     </select>
                   </div>
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Employee type:</label>
+                    <label htmlFor="">Employee type:</label>
                     <select
                       name="employee_type"
                       id=""
                       onChange={inputChange}
                       value={data.employee_type}
-                      required
                     >
                       <option selected="selected" value="PT">
                         PT
@@ -382,7 +376,7 @@ const Inventory = () => {
                     </select>
                   </div>
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Phone number:</label>
+                    <label htmlFor="">Phone number:</label>
 
                     <input
                       type="text"
@@ -390,11 +384,10 @@ const Inventory = () => {
                       name="phone_number"
                       onChange={inputChange}
                       value={data.phone_number}
-                      required
                     />
                   </div>
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Emergency contact:</label>
+                    <label htmlFor="">Emergency contact:</label>
 
                     <input
                       type="text"
@@ -402,7 +395,6 @@ const Inventory = () => {
                       name="emergency_contact"
                       onChange={inputChange}
                       value={data.emergency_contact}
-                      required
                     />
                   </div>
                   <div className={styles.table_content}>

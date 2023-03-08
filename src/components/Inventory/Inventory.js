@@ -67,7 +67,7 @@ const Inventory = () => {
     try {
       if (!(e.target[0].value == "")) {
         Axios.get(
-          `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/${drivers}`,
+          `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/tractors/${drivers}`,
           config
         )
           .then((response) => {
@@ -100,7 +100,7 @@ const Inventory = () => {
     setEquipmentName("Tractors");
     try {
       Axios.get(
-        `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/${url}?type=Tractor&status=${equipStatus}`,
+        `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/tractors/${url}?type=Tractor&status=${equipStatus}`,
         // `http://localhost:8000/api/v1/LC/tractors/${url}?type=Tractor&status=${equipStatus}`,
         {
           headers: {
@@ -141,7 +141,7 @@ const Inventory = () => {
     setEquipmentName("Trailers");
     try {
       Axios.get(
-        `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/${url}?type=Trailer&status=${equipStatus}`,
+        `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/tractors/${url}?type=Trailer&status=${equipStatus}`,
         // `http://localhost:8000/api/v1/LC/tractors/${url}?type=Trailer&status=${equipStatus}`,
         {
           headers: {
@@ -182,7 +182,7 @@ const Inventory = () => {
     setEquipmentName("Straight trucks");
     try {
       Axios.get(
-        `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/${url}?type=Straight Truck&status=${equipStatus}`,
+        `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/tractors/${url}?type=Straight Truck&status=${equipStatus}`,
         // `http://localhost:8000/api/v1/LC/tractors/${url}?type=Straight Truck&status=${equipStatus}`,
         {
           headers: {
@@ -220,7 +220,7 @@ const Inventory = () => {
     setEquipmentName("Equipment");
     try {
       Axios.get(
-        `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/${url}?status=${equipStatus}`,
+        `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/tractors/${url}?status=${equipStatus}`,
         // `http://localhost:8000/api/v1/LC/tractors/${url}?type=Straight Truck&status=${equipStatus}`,
         {
           headers: {
@@ -268,7 +268,7 @@ const Inventory = () => {
 
     try {
       Axios.get(
-        `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/${InputClick}`,
+        `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/tractors/${InputClick}`,
         config
       )
         .then((response) => {

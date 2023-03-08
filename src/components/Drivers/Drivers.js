@@ -71,7 +71,7 @@ const Inventory = () => {
     try {
       if (!(e.target[0].value == "")) {
         Axios.get(
-          `https://lc-backend-v2.herokuapp.com/api/v1/LC/drivers/${drivers}`,
+          `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/drivers/${drivers}`,
           config
         )
           .then((response) => {
@@ -104,7 +104,7 @@ const Inventory = () => {
 
     try {
       Axios.get(
-        `https://lc-backend-v2.herokuapp.com/api/v1/LC/drivers/${url}`,
+        `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/drivers/${url}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -145,7 +145,7 @@ const Inventory = () => {
 
     try {
       Axios.get(
-        `https://lc-backend-v2.herokuapp.com/api/v1/LC/drivers/${InputClick}`,
+        `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/drivers/${InputClick}`,
         config
       )
         .then((response) => {

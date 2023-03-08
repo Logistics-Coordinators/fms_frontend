@@ -157,7 +157,7 @@ const Inventory = () => {
     setModalColor("green");
 
     Axios.patch(
-      `https://lc-backend-v2.herokuapp.com/api/v1/LC/drivers/${EmployeeName}`,
+      `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/drivers/${EmployeeName}`,
       formData,
       {
         headers: {
@@ -293,7 +293,7 @@ const Inventory = () => {
                     <input
                       type="date"
                       placeholder="YYYY-MM-DD"
-                      placeholder="Enter epiry"
+                      // placeholder="Enter epiry"
                       name="expiry"
                       onChange={inputChange}
                       value={data.expiry.substr(0, 10)}
@@ -306,7 +306,7 @@ const Inventory = () => {
                     <input
                       type="date"
                       placeholder="YYYY-MM-DD"
-                      placeholder="Enter Medical expiry"
+                      // placeholder="Enter Medical expiry"
                       name="medical_expiry_date"
                       onChange={inputChange}
                       value={data.medical_expiry_date.substr(0, 10)}

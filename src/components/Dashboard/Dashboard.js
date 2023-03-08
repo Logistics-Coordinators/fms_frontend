@@ -35,7 +35,10 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    Axios.get("https://lc-backend-v2.herokuapp.com/api/v1/LC/expired", config)
+    Axios.get(
+      "https://loadlc-backend-staging.herokuapp.com/api/v1/LC/expired",
+      config
+    )
       .then((res) => {
         console.log(res.data);
         setLoadingAniStateExpiry(false);
@@ -47,7 +50,10 @@ const Dashboard = () => {
       .catch((err) => {
         console.log(err);
       });
-    Axios.get("https://lc-backend-v2.herokuapp.com/api/v1/LC/activity", config)
+    Axios.get(
+      "https://loadlc-backend-staging.herokuapp.com/api/v1/LC/activity",
+      config
+    )
       .then((res) => {
         setLoadingAniStateActivity(false);
         setActivity(res.data.activities);
@@ -60,7 +66,10 @@ const Dashboard = () => {
   const handleActivity = (e) => {
     e.preventDefault();
     setActivity([]);
-    Axios.get("https://lc-backend-v2.herokuapp.com/api/v1/LC/activity", config)
+    Axios.get(
+      "https://loadlc-backend-staging.herokuapp.com/api/v1/LC/activity",
+      config
+    )
       .then((res) => {
         // console.log(res);
         setActivity(res.data.activities);

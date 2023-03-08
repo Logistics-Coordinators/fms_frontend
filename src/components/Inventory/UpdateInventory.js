@@ -150,7 +150,7 @@ const Inventory = () => {
     setModalColor("green");
 
     // Axios.patch(
-    //   `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/maintenance/${UnitNumber}`,
+    //   `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/tractors/maintenance/${UnitNumber}`,
     //   formData,
     //   {
     //     headers: {
@@ -183,7 +183,7 @@ const Inventory = () => {
     //   });
 
     Axios.patch(
-      `https://lc-backend-v2.herokuapp.com/api/v1/LC/tractors/${inventoryData.unit}`,
+      `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/tractors/${inventoryData.unit}`,
       body,
       {
         headers: {
@@ -272,7 +272,6 @@ const Inventory = () => {
                             name="year"
                             onChange={inputChange}
                             value={data.year}
-
                           />
                         </div>
                         <div className={styles.table_content}>

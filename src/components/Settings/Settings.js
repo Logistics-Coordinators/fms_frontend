@@ -28,7 +28,7 @@ const Settings = () => {
 
   useEffect(() => {
     Axios.get(
-      `https://lc-backend-v2.herokuapp.com/api/v1/LC/currCompany`,
+      `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/currCompany`,
 
       config
     )
@@ -71,7 +71,7 @@ const Settings = () => {
   //   setModalColor("green");
 
   //   Axios.patch(
-  //     `https://lc-backend-v2.herokuapp.com/api/v1/LC/updateCompany`,
+  //     `https://loadlc-backend-staging.herokuapp.com/api/v1/LC/updateCompany`,
   //     formData,
   //     {
   //       headers: {
