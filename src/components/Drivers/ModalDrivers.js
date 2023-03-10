@@ -41,6 +41,7 @@ const ModalDrivers = (props) => {
     training: false,
     disciplinary_actions: false,
     safety_records: false,
+    driving_license: false,
   });
 
   const [appendedFile, setAppendedFile] = useState({
@@ -50,6 +51,7 @@ const ModalDrivers = (props) => {
     training: [],
     disciplinary_actions: [],
     safety_records: [],
+    driving_license: [],
   });
 
   const [appendedFileName, setAppendedFileName] = useState("");
@@ -406,34 +408,53 @@ const ModalDrivers = (props) => {
                     }}
                   ></div>
                 </div>
-
-                <div
-                  onClick={(event) =>
-                    props.file.driving_license == "none"
-                      ? "none"
-                      : props.file.driving_license == null
-                      ? "none"
-                      : props.file.driving_license == undefined
-                      ? "none"
-                      : window.open(`${props.file.driving_license}`, "_blank")
-                  }
-                >
-                  <label>Copy of valid driver's licence with photo</label>
+                <div className={styles.appended_files_extended_container}>
                   <div
-                    className={styles.checkBox}
-                    style={{
-                      width: "12px",
-                      height: "12px",
-                      backgroundColor:
-                        props.file.driving_license == "none"
-                          ? "red"
-                          : props.file.driving_license == null
-                          ? "red"
-                          : props.file.driving_license == undefined
-                          ? "red"
-                          : "green",
-                    }}
-                  ></div>
+                    onClick={(event) =>
+                      handleAppendedFiles(
+                        props.file.driving_license,
+                        "driving_license"
+                      )
+                    }
+                  >
+                    <label>Copy of valid driver's licence with photo</label>
+                    <div
+                      className={styles.checkBox}
+                      style={{
+                        width: "12px",
+                        height: "12px",
+                        backgroundColor:
+                          props.file.driving_license &&
+                          (props.file.driving_license[
+                            props.file.driving_license.length - 1
+                          ] == "none"
+                            ? "red"
+                            : props.file.driving_license[
+                                props.file.driving_license.length - 1
+                              ] == null
+                            ? "red"
+                            : props.file.driving_license[
+                                props.file.driving_license.length - 1
+                              ] == undefined
+                            ? "red"
+                            : "green"),
+                      }}
+                    ></div>
+                  </div>
+                  {appendDisplay.driving_license && (
+                    <div className={styles.append_main_container}>
+                      {appendedFile.driving_license.map((item, index) => (
+                        <button
+                          onClick={(event) => window.open(`${item}`, "_blank")}
+                          style={{
+                            display: item === "none" ? "none" : "block",
+                          }}
+                        >
+                          File {item === "none" ? index + 1 : index}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 <div

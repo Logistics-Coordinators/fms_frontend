@@ -279,6 +279,19 @@ const Inventory = () => {
                   </div>
 
                   <div className={styles.table_content}>
+                    <label htmlFor="">*Start date:</label>
+                    <input
+                      type="date"
+                      data-date-format="YYYY MM DD"
+                      placeholder=""
+                      name="start_date"
+                      required
+                      onChange={inputChange}
+                      value={data.start_date}
+                    />
+                  </div>
+
+                  <div className={styles.table_content}>
                     <label htmlFor="">Gender:</label>
                     <input
                       type="text"
@@ -310,17 +323,6 @@ const Inventory = () => {
                       name="DOB"
                       onChange={inputChange}
                       value={data.DOB}
-                    />
-                  </div>
-                  <div className={styles.table_content}>
-                    <label htmlFor="">Start date:</label>
-                    <input
-                      type="date"
-                      data-date-format="YYYY MM DD"
-                      placeholder=""
-                      name="start_date"
-                      onChange={inputChange}
-                      value={data.start_date}
                     />
                   </div>
 
