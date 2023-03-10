@@ -244,17 +244,6 @@ const Inventory = () => {
 
                 <div className={styles.table_container}>
                   <div className={styles.table_content}>
-                    <label htmlFor="">*Employee ID</label>
-                    <input
-                      type="text"
-                      placeholder="E.g. 1234ABCD"
-                      name="employee_id"
-                      onChange={inputChange}
-                      value={data.employee_id}
-                      required
-                    />
-                  </div>
-                  <div className={styles.table_content}>
                     <label htmlFor="">*Employee Name:</label>
                     <input
                       type="text"
@@ -288,6 +277,17 @@ const Inventory = () => {
                       required
                       onChange={inputChange}
                       value={data.start_date}
+                    />
+                  </div>
+
+                  <div className={styles.table_content}>
+                    <label htmlFor="">Employee ID</label>
+                    <input
+                      type="text"
+                      placeholder="E.g. 1234ABCD"
+                      name="employee_id"
+                      onChange={inputChange}
+                      value={data.employee_id}
                     />
                   </div>
 
