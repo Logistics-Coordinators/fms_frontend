@@ -42,6 +42,7 @@ const ModalDrivers = (props) => {
     disciplinary_actions: false,
     safety_records: false,
     driving_license: false,
+    reference_checks: false,
   });
 
   const [appendedFile, setAppendedFile] = useState({
@@ -52,6 +53,7 @@ const ModalDrivers = (props) => {
     disciplinary_actions: [],
     safety_records: [],
     driving_license: [],
+    reference_checks: [],
   });
 
   const [appendedFileName, setAppendedFileName] = useState("");
@@ -705,34 +707,64 @@ const ModalDrivers = (props) => {
                     }}
                   ></div>
                 </div>
-                <div
-                  onClick={(event) =>
-                    props.file.reference_checks == "none"
-                      ? "none"
-                      : props.file.reference_checks == null
-                      ? "none"
-                      : props.file.reference_checks == undefined
-                      ? "none"
-                      : window.open(`${props.file.reference_checks}`, "_blank")
-                  }
-                >
-                  <label>Reference checks</label>
+                <div className={styles.appended_files_extended_container}>
                   <div
-                    className={styles.checkBox}
-                    style={{
-                      width: "12px",
-                      height: "12px",
-                      //  || null || undefined)
-                      backgroundColor:
-                        props.file.reference_checks == "none"
-                          ? "red"
-                          : props.file.reference_checks == null
-                          ? "red"
-                          : props.file.reference_checks == undefined
-                          ? "red"
-                          : "green",
-                    }}
-                  ></div>
+                    onClick={(event) =>
+                      handleAppendedFiles(
+                        props.file.reference_checks,
+                        "reference_checks"
+                      )
+                    }
+                  >
+                    {/* {console.log(props.file.reference_checks)} */}
+                    <label
+                      onClick={(event) =>
+                        handleAppendedFiles(
+                          props.file.reference_checks,
+                          "reference_checks"
+                        )
+                      }
+                    >
+                      Reference Check
+                    </label>
+
+                    <div
+                      className={styles.checkBox}
+                      style={{
+                        width: "12px",
+                        height: "12px",
+                        backgroundColor:
+                          props.file.reference_checks &&
+                          (props.file.reference_checks[
+                            props.file.reference_checks.length - 1
+                          ] == "none"
+                            ? "red"
+                            : props.file.reference_checks[
+                                props.file.reference_checks.length - 1
+                              ] == null
+                            ? "red"
+                            : props.file.reference_checks[
+                                props.file.reference_checks.length - 1
+                              ] == undefined
+                            ? "red"
+                            : "green"),
+                      }}
+                    ></div>
+                  </div>
+                  {appendDisplay.reference_checks && (
+                    <div className={styles.append_main_container}>
+                      {appendedFile.reference_checks.map((item, index) => (
+                        <button
+                          onClick={(event) => window.open(`${item}`, "_blank")}
+                          style={{
+                            display: item === "none" ? "none" : "block",
+                          }}
+                        >
+                          File {item === "none" ? index + 1 : index}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div
                   onClick={(event) =>
